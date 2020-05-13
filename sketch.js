@@ -1,6 +1,3 @@
-/*
-instead of hiding everything, just make a rect the size of the screen appear that's black with opacity
-*/
 const c = document.getElementById("game");
 const ctx = c.getContext("2d");
 const width = c.width;
@@ -263,6 +260,8 @@ function drawBoard(board) {
             } else {
                 ctx.fillStyle = theme["accent"];
             }
+            // ctx.rect(x * (width/5)+10, y * (width/5)+10, width/5 - 10, width/5 - 10);
+            // ctx.fill();
             ctx.roundRect(x * (width/5)+10, y * (width/5)+10, width/5-10, width/5-10, {upperLeft:10,upperRight:10,lowerRight:10,lowerLeft:10}, true, false);
         }
     }
