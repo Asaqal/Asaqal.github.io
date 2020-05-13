@@ -74,8 +74,8 @@
 body {
     background-color: var(--background);
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: 680;
+    width: 410;
     left: calc(50% - 205px);
     top: calc(50% - 340px);
     overflow: hidden;
