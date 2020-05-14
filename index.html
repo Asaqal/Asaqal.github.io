@@ -15,21 +15,24 @@
         <div id="footer">
             <p id="moveCounter">Moves: 0</p>
             <p id="timeElapsed">Time: 00:00</p>
-            <div id="footerButtons">
-                <button id="changeTheme" onclick="changeTheme()">Theme</button>
-                <button id="resetButton" onclick="resetBoard()">Reset</button>
-                <button id="newBoard" onclick="runGame()">New Game</button>
-            </div>
+            <button id="changeTheme" onclick="changeTheme()">Theme</button>
+            <button id="resetButton" onclick="resetBoard()">Reset</button>
+            <button id="newBoard" onclick="runGame()">New Game</button>
             <h1 id="author">Ahmad Saqal</h1>
         </div>
 
-        <div id="overlay" style="visibility: hidden;"></div>
+        <div id="startGame" style="visibility: visible;">
+            <p id="sG_instructions">In Lights Out!, the goal is to make the entire board the same color.<br><br> This is done by clicking on a light. In a plus shape on the chosen light, the surrounding lights will be flipped<br><br>(ex: lights already on turn off, and lights already off turn on).<br><br>At the bottom you can change the theme, reset the current board, or generate a new board.</p>
+            <button id="sG_play" onclick="runGame()">Play</button>
+        </div>
 
         <div id="endGame" style="visibility: hidden;">
             <p id="eG_moveCounter"></p>
             <p id="eG_timeElapsed"></p>
             <button id="eG_playAgain" onclick="runGame()">Play Again</button>
         </div>
+
+        <div id="overlay" style="visibility: visible;"></div>
         
         <script src="sketch.js" async defer></script>
     </body>

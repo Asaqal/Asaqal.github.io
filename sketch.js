@@ -1,3 +1,26 @@
+/*
+BEFORE GITHUB:
+reorganize js
+comment all js code
+
+BEFORE AP:
+make lights square and get rid of the rounded corner code
+get rid of this comment
+
+BEFORE PORTFOLIO:
+get rid of canvas, replace with a table of rounded buttons
+redo all of the css using %s instead of px
+onhover have tiles outline with opposite color
+on click have tiles fade into opposite color
+add favicon
+autoscale so it fits the page
+get rid of reset button, move it to the right -> help button -> highlights (hover effect) the next move to solve it
+maybe put themes in json?
+make on win, the winning prompt is opposite color of the board behind it
+make all text unselectable
+
+*/
+
 const c = document.getElementById("game");
 const ctx = c.getContext("2d");
 const width = c.width;
@@ -17,29 +40,77 @@ const theme0 = {
 
 const theme1 = {
     "name" : "theme1",
+    "background" : "#eea243",
+    "primary" : "#003459",
+    "secondary" : "#ffffe5",
+    "accent" : "#00171F"
+}
+
+const theme2 = {
+    "name" : "theme2",
     "background" : "#1d3557",
     "primary" : "#457b9d",
     "secondary" : "#f1faee",
     "accent" : "#e63946"
 }
 
-const theme2 = {
-    "name" : "theme2",
-    "background" : "#f77f00",
-    "primary" : "#fcbf49",
-    "secondary" : "#eae2b7",
-    "accent" : "#003049"
-}
-
 const theme3 = {
     "name" : "theme3",
+    "background" : "#e63946",
+    "primary" : "#457b9d",
+    "secondary" : "#f1faee",
+    "accent" : "#1d3557"
+}
+
+const theme4 = {
+    "name" : "theme4",
+    "background" : "#114b5f",
+    "primary" : "#1a936f",
+    "secondary" : "#f3e9d2",
+    "accent" : "#88d498"
+}
+
+const theme5 = {
+    "name" : "theme5",
+    "background" : "#88d498",
+    "primary" : "#1a936f",
+    "secondary" : "#f3e9d2",
+    "accent" : "#114b5f"
+}
+
+const theme6 = {
+    "name" : "theme6",
     "background" : "#ffcbd2",
     "primary" : "#ffb4a2",
     "secondary" : "#e5989b",
     "accent" : "#6d6875"
 }
 
-const themes = [theme0, theme1, theme2, theme3];
+const theme7 = {
+    "name" : "theme7",
+    "background" : "#6d6875",
+    "primary" : "#ffb4a2",
+    "secondary" : "#e5989b",
+    "accent" : "#ffcbd2"
+}
+
+const theme8 = {
+    "name" : "theme8",
+    "background" : "#caf0f8",
+    "primary" : "#0077b6",
+    "secondary" : "#00b4d8",
+    "accent" : "#03045e"
+}
+
+const theme9 = {
+    "name" : "theme9",
+    "background" : "#03045e",
+    "primary" : "#0077b6",
+    "secondary" : "#00b4d8",
+    "accent" : "#caf0f8"
+}
+
+const themes = [theme0, theme1, theme2, theme3, theme4, theme5, theme6, theme7, theme8, theme9];
 
 let theme = theme0;
 let themeChoice = 0;
@@ -133,7 +204,6 @@ function genBoard() {
 
     if (solvable(board)) {
         resetBoard();
-        moves = 0;
         t0 = performance.now();
     } else {
         genBoard();
@@ -142,7 +212,7 @@ function genBoard() {
 
 function resetBoard() {
     board = copy2DArray(originalBoard);
-    moves++;
+    moves = 0;
 }
 
 // Upon clicking a light, the selected light and 4 adjacent lights are flipped
@@ -269,6 +339,7 @@ function drawBoard(board) {
 
 // Performs functions that only need to run once in the beginning
 function setup() {
+    document.getElementById("startGame").style.visibility = "hidden";
     document.getElementById("endGame").style.visibility = "hidden";
     document.getElementById("overlay").style.visibility = "hidden";
     genBoard();
@@ -289,7 +360,6 @@ function drawGame() {
 }
 
 function endGame() {
-    console.log("Win");
     document.getElementById("endGame").style.visibility = "visible";
     document.getElementById("overlay").style.visibility = "visible";
     document.getElementById("eG_moveCounter").innerHTML = document.getElementById("moveCounter").innerHTML;
@@ -303,3 +373,5 @@ function runGame() {
 }
 
 runGame();
+document.getElementById("overlay").style.visibility = "visible";
+document.getElementById("startGame").style.visibility = "visible";
