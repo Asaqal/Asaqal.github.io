@@ -1,3 +1,5 @@
-## Lights Out!
+## Website
 
-A simple Lights Out! game made by Ahmad Saqal.
+A simple website made by Ahmad Saqal.
+There is a bakground effect.
+There is a Lights Out! game.
