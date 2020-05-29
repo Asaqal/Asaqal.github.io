@@ -8,3 +8,17 @@
     background: transparent;
     user-select: none;
 }
+
+#sketch-container {
+    position: fixed;
+    z-index: 0;
+}
+
+#menu {
+    position: absolute;
+    z-index: 1;
+}
+
+.jscolor {
+    width: 100px;
+}

@@ -1,25 +1,22 @@
 /*
-triangulate and draw the triangles at those points
-
-color the triangles based on their average point's y coordinate
-use a corresponding gradient
-
-just have lights be big gradient things that blend together
-
-maybe move each point only around it's own area slightly, and keep the triangle relationships constant
-test triangle strips with different heights
-issue is it will look weird at the edges, how do i make it so there are particles off the screen in a small area
-
 https://github.com/processing/p5.js/wiki/Positioning-your-canvas
+http://jscolor.com/examples/
 
+create menu to adjust colors easily in the webpage
+make option to cycle colors so they rotate through the image
+make option to increase triangles which keeps the proper aspect ratio, just increases rows and cols
 
-instead of triangle strip, create triangle class, draw the triangle based on avg of y, and add to array triangles
+add a useful.js to convert rgb to hex and hex to rgb
 
-in setup create a triangle array, make sure to put it in resize too
-then in draw, simply go through all of the triangles and display them, and change their color based on their center
-use map to get shade or opacity, and another map for color tones?
+need to figure out how to adjust # of rows and columns
+but keep the triangles mesh just bigger than the screen always
 
-create gen points and gen triangles functions
+choose rows and cols based off windowith and height, use aspect ratio so it looks the same i guess?
+have to change translate, and area for each point? idk
+maybe change # of points based on area of screen? so it looks similar, then choose rows and cols -> wont work
+
+eventually convert this into a class that i make into an object with different parameters
+cycle, n# of colors, different shapes, size of background
 */
 const rows = 9;
 const cols = Math.floor(rows * 1.4);
@@ -28,9 +25,13 @@ let triangles = [];
 
 const speed = 0.005;
 
+const color1 = [255, 255, 255];
+const color2 = [0, 0, 0];
+
 function setup() {
-    const c= createCanvas(windowWidth, windowHeight);
-    c.style('display', 'block');
+    const canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent("sketch-container");
+    canvas.style('display', 'block');
 
     genPoints();
     genTriangles();
@@ -38,10 +39,7 @@ function setup() {
 
 function draw() {
     background(0, 0, 0);
-    translate(-width/5, -height/5);
-
-    fill(0);
-    stroke(255);
+    translate(-width/3, -height/3);
 
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
@@ -68,7 +66,7 @@ function genPoints() {
     for (let y = 0; y < rows; y++) {
         points.push([]);
         for (let x = 0; x < cols; x++) {
-            points[y].push(new Point(width/cols*x*1.2, height/rows*y*1.2));
+            points[y].push(new Point(width/cols*x*1.5, height/rows*y*1.5));
         }
     }
 }
@@ -85,4 +83,10 @@ function genTriangles() {
             }
         }
     }
+}
+
+function updateColor(picker) {
+    eval(picker.styleElement.id)[0] = picker.rgb[0];
+    eval(picker.styleElement.id)[1] = picker.rgb[1];
+    eval(picker.styleElement.id)[2] = picker.rgb[2];
 }

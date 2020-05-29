@@ -10,7 +10,17 @@
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
+        <div id="menu">
+            <p>Color 1:</p>
+            <input id="color1" class="jscolor {onFineChange:'updateColor(this)', valueElement:'null', value:'FFFFFF'}">
+            <p>Color 2:</p>
+            <input id="color2" class="jscolor {onFineChange:'updateColor(this)', valueElement:'null', value:'000000'}">
+        </div>
+
+        <div id="sketch-container"></div>
+
         <script src="libraries/p5/p5.min.js"></script>
+        <script src="libraries/jscolor.js"></script>
         <script src="Point.js"></script>
         <script src="Triangle.js"></script>
         <script src="sketch.js" async defer></script>
