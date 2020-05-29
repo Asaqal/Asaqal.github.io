@@ -1,0 +1,14 @@
+fix css in lights out
+need to add button on lights out to go back
+
+create a background effect
+use random noise to move points around the screen
+if they reach the boundary move them to the other edge
+so they are constantly moving around
+
+use triangulation to create triangles
+using the center point of the triangle
+avg of the y cooridnates
+color the triangle on a gradient
+
+use bootstrap on main website
