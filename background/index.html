@@ -10,14 +10,22 @@
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <div id="menu">
+        <div id="menu" onmouseleave="updateMenu()" onmouseenter="showMenu()">
+            <p>Always Show Menu:</p>
+            <input id="checkMenu" type="checkbox" onclick="updateMenu()" checked>
+
             <p>Color 1:</p>
             <input id="color1" class="jscolor {onFineChange:'updateColor(this)', valueElement:'null', value:'FFFFFF'}">
+            
             <p>Color 2:</p>
             <input id="color2" class="jscolor {onFineChange:'updateColor(this)', valueElement:'null', value:'000000'}">
+            
             <p>Border:</p>
-            <input id="haveBorder" type="checkbox" checked>
+            <input id="checkBorder" type="checkbox" checked>
             <input id="colorBorder" class="jscolor {onFineChange:'updateColor(this)', valueElement:'null', value:'000000'}">
+            
+            <p>Roughness:</p>
+            <input id="roughness" type="range" min="0" max="50" value="15">
         </div>
 
         <div id="sketch-container"></div>

@@ -6,6 +6,8 @@ class Triangle {
 
         this.xcenter = (p1.x + p2.x + p3.x) / 3;
         this.ycenter = (p1.y + p2.y + p3.y) / 3;
+
+        this.coff = random(0, 100);
     }
 
     display() {
@@ -13,9 +15,11 @@ class Triangle {
         const g = map(this.ycenter, 0, height, color1[1], color2[1]);
         const b = map(this.ycenter, 0, height, color1[2], color2[2]);
 
-        fill(r, g, b);
+        const roughness = document.getElementById("roughness").value
+        const crand = map(noise(this.coff), 0, 1, -1 * roughness, roughness);
+        fill(r + crand, g + crand, b + crand);
 
-        if (document.getElementById("haveBorder").checked) {
+        if (document.getElementById("checkBorder").checked) {
             stroke(colorBorder[0], colorBorder[1], colorBorder[2]);
         } else {
             stroke(r, g, b);

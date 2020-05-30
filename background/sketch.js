@@ -2,12 +2,8 @@
 https://github.com/processing/p5.js/wiki/Positioning-your-canvas
 http://jscolor.com/examples/
 
-create menu to adjust colors easily in the webpage
 make option to cycle colors so they rotate through the image
 make option to increase triangles which keeps the proper aspect ratio, just increases rows and cols
-make option to choose triangle borders, if yes, and what color
-
-add a useful.js to convert rgb to hex and hex to rgb
 
 need to figure out how to adjust # of rows and columns
 but keep the triangles mesh just bigger than the screen always
@@ -91,4 +87,16 @@ function updateColor(picker) {
     eval(picker.styleElement.id)[0] = picker.rgb[0];
     eval(picker.styleElement.id)[1] = picker.rgb[1];
     eval(picker.styleElement.id)[2] = picker.rgb[2];
+}
+
+function updateMenu() {
+    if (document.getElementById("checkMenu").checked) {
+        document.getElementById("menu").style.opacity = "1";
+    } else {
+        document.getElementById("menu").style.opacity = "0";
+    }
+}
+
+function showMenu() {
+    document.getElementById("menu").style.opacity = "1";
 }
