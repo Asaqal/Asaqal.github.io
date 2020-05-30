@@ -5,6 +5,7 @@ http://jscolor.com/examples/
 create menu to adjust colors easily in the webpage
 make option to cycle colors so they rotate through the image
 make option to increase triangles which keeps the proper aspect ratio, just increases rows and cols
+make option to choose triangle borders, if yes, and what color
 
 add a useful.js to convert rgb to hex and hex to rgb
 
@@ -27,6 +28,7 @@ const speed = 0.005;
 
 const color1 = [255, 255, 255];
 const color2 = [0, 0, 0];
+const colorBorder = [0, 0, 0];
 
 function setup() {
     const canvas = createCanvas(windowWidth, windowHeight);

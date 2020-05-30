@@ -14,7 +14,12 @@ class Triangle {
         const b = map(this.ycenter, 0, height, color1[2], color2[2]);
 
         fill(r, g, b);
-        stroke(r, g, b);
+
+        if (document.getElementById("haveBorder").checked) {
+            stroke(colorBorder[0], colorBorder[1], colorBorder[2]);
+        } else {
+            stroke(r, g, b);
+        }
         triangle(this.p1.x, this.p1.y, this.p2.x, this.p2.y, this.p3.x, this.p3.y);
     }
 }
