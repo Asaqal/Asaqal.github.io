@@ -3,27 +3,22 @@ https://github.com/processing/p5.js/wiki/Positioning-your-canvas
 http://jscolor.com/examples/
 
 make option to cycle colors so they rotate through the image
-make option to increase triangles which keeps the proper aspect ratio, just increases rows and cols
-
-need to figure out how to adjust # of rows and columns
-but keep the triangles mesh just bigger than the screen always
-
-choose rows and cols based off windowith and height, use aspect ratio so it looks the same i guess?
-have to change translate, and area for each point? idk
-maybe change # of points based on area of screen? so it looks similar, then choose rows and cols -> wont work
 
 eventually convert this into a class that i make into an object with different parameters
 cycle, n# of colors, different shapes, size of background
+
+event listener for menu hover effect
 */
-const rows = 9;
-const cols = Math.floor(rows * 1.4);
-let points = [];
-let triangles = [];
+let density = document.getElementById("density").value;
+let squareSize;
+let rows, cols;
 
-const speed = 0.005;
+let xbuffer, ybuffer;
 
-const color1 = [255, 255, 255];
-const color2 = [0, 0, 0];
+let points, triangles;
+
+const color1 = [255, 0, 0];
+const color2 = [0, 0, 255];
 const colorBorder = [0, 0, 0];
 
 function setup() {
@@ -31,14 +26,16 @@ function setup() {
     canvas.parent("sketch-container");
     canvas.style('display', 'block');
 
+    initialVars();
     genPoints();
     genTriangles();
 }
 
 function draw() {
     background(0, 0, 0);
-    translate(-width/3, -height/3);
-
+    translate(xbuffer, ybuffer);
+    scale(1.5, 1.5);
+    
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
             points[y][x].move();
@@ -52,24 +49,35 @@ function draw() {
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-    
-    points = [];
-    genPoints();
 
-    triangles = [];
+    density = document.getElementById("density").value;
+
+    initialVars();
+    genPoints();
     genTriangles();
 }
 
+function initialVars() {
+    squareSize = 1 / density * height;
+    rows = Math.ceil(height/squareSize) + 4;
+    cols = Math.ceil(width/squareSize) + 2;
+
+    xbuffer = width/2 - squareSize;
+    ybuffer = height/2 - squareSize*2;
+}
+
 function genPoints() {
+    points = [];
     for (let y = 0; y < rows; y++) {
         points.push([]);
         for (let x = 0; x < cols; x++) {
-            points[y].push(new Point(width/cols*x*1.5, height/rows*y*1.5));
+            points[y].push(new Point(squareSize*x-(width/2), squareSize*y-(height/2)));
         }
     }
 }
 
 function genTriangles() {
+    triangles = [];
     for (let y = 0; y < rows-1; y++) {
         for (let x = 0; x < cols-1; x++) {
             if (random() > 0.5) {

@@ -14,6 +14,7 @@ class Point {
         this.x = (noise(this.xoff) * width/cols * 3) + this.xorig;
         this.y = (noise(this.yoff) * height/rows * 3) + this.yorig;
 
+        const speed = map(document.getElementById("speed").value, 0, 100, 0, 0.025);
         this.xoff += speed;
         this.yoff += speed;
     }

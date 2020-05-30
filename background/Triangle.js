@@ -11,11 +11,11 @@ class Triangle {
     }
 
     display() {
-        const r = map(this.ycenter, 0, height, color1[0], color2[0]);
-        const g = map(this.ycenter, 0, height, color1[1], color2[1]);
-        const b = map(this.ycenter, 0, height, color1[2], color2[2]);
+        const r = map(this.ycenter, -ybuffer, ybuffer+squareSize, color1[0], color2[0]);
+        const g = map(this.ycenter, -ybuffer, ybuffer+squareSize, color1[1], color2[1]);
+        const b = map(this.ycenter, -ybuffer, ybuffer+squareSize, color1[2], color2[2]);
 
-        const roughness = document.getElementById("roughness").value
+        const roughness = map(document.getElementById("roughness").value, 0, 100, 0, 50);
         const crand = map(noise(this.coff), 0, 1, -1 * roughness, roughness);
         fill(r + crand, g + crand, b + crand);
 
