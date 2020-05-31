@@ -12,3 +12,5 @@ avg of the y cooridnates
 color the triangle on a gradient
 
 use bootstrap on main website
+
+eventually only have one useful.js in the entire webset that i reference from different places

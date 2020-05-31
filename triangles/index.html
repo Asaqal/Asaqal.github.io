@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Triangles</title>
+        <meta name="description" content="A triangle effect by Ahmad Saqal">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <div id="menu" onmouseleave="updateMenu()" onmouseenter="showMenu()">
+            <p>Always Show Menu:</p>
+            <input id="checkMenu" type="checkbox" onclick="updateMenu()" checked>
+
+            <p>Color 1:</p>
+            <input id="color1" class="jscolor {borderColor:'#FFFFFF', insetColor:'#FFFFFF', backgroundColor:'#0000007f', onFineChange:'updateColor(this)', valueElement:'null', value:'38fc9a'}">
+            
+            <p>Color 2:</p>
+            <input id="color2" class="jscolor {borderColor:'#FFFFFF', insetColor:'#FFFFFF', backgroundColor:'#0000007f', onFineChange:'updateColor(this)', valueElement:'null', value:'c300ff'}">
+            
+            <p>Border:</p>
+            <input id="checkBorder" type="checkbox" checked>
+            <input id="colorBorder" class="jscolor {borderColor:'#FFFFFF', insetColor:'#FFFFFF', backgroundColor:'#0000007f', onFineChange:'updateColor(this)', valueElement:'null', value:'c9faff'}">
+            
+            <p>Density:</p>
+            <input id="density" type="range" min="5" max="20" value="10" oninput="windowResized()">
+
+            <p>Roughness:</p>
+            <input id="roughness" type="range" min="0" max="100" value="30">
+
+            <P>Speed:</P>
+            <input id="speed" type="range" min="0" max="100" value="20">
+
+            <!-- <p>Cycle:</p>
+            <input id="cycle" type="range" min="0" max="100" value="1"> -->
+        </div>
+
+        <div id="sketch-container"></div>
+
+        <script src="libraries/p5/p5.min.js"></script>
+        <script src="libraries/jscolor.js"></script>
+        <script src="Point.js"></script>
+        <script src="Triangle.js"></script>
+        <script src="sketch.js" async defer></script>
+    </body>
+</html>
