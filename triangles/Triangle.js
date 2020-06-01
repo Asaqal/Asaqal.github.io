@@ -37,15 +37,16 @@ class Triangle {
 
         if (this.ycenter > cycleLocation) {
             fill(rbot + crand, gbot + crand, bbot + crand);
+            stroke(rbot + crand, gbot + crand, bbot + crand);
         } else {
             fill(rtop + crand, gtop + crand, btop + crand);
+            stroke(rtop + crand, gtop + crand, btop + crand);
         }
 
         if (document.getElementById("checkBorder").checked) {
             stroke(colorBorder[0], colorBorder[1], colorBorder[2]);
-        } else {
-            stroke(r, g, b);
         }
+        
         triangle(this.p1.x, this.p1.y, this.p2.x, this.p2.y, this.p3.x, this.p3.y);
     }
 }
