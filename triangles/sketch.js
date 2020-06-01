@@ -17,6 +17,10 @@ let xbuffer, ybuffer;
 
 let points, triangles;
 
+let speed;
+let randomness;
+let roughness;
+
 let cycleLocation, cycleSpeed, cycleNumber;
 
 const color1 = [56, 252, 154];
@@ -74,10 +78,16 @@ function initialVars() {
     density = document.getElementById("density").value;
     squareSize = 1 / density * height;
     rows = Math.ceil(height/squareSize) + 4;
-    cols = Math.ceil(width/squareSize) + 2;
+    cols = Math.ceil(width/squareSize) + 4;
 
     xbuffer = width/2 - squareSize;
     ybuffer = height/2 - squareSize*2;
+
+    speed = map(document.getElementById("speed").value, 0, 100, 0, 0.025);
+
+    randomness = map(document.getElementById("randomness").value, 0, 100, 0, 5);
+
+    roughness = map(document.getElementById("roughness").value, 0, 100, 0, 50);
 
     cycleLocation = -ybuffer;
     cycleSpeed = map(document.getElementById("cycle").value, 0, 100, 0, 20);

@@ -32,7 +32,6 @@ class Triangle {
             bbot = map(this.ycenter, cycleLocation, ybuffer+squareSize*2, color1[2], color2[2]);
         }
 
-        const roughness = map(document.getElementById("roughness").value, 0, 100, 0, 50);
         const crand = map(noise(this.coff), 0, 1, -1 * roughness, roughness);
 
         if (this.ycenter > cycleLocation) {
