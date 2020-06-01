@@ -9,10 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body id="body">
         <div id="menu" onmouseleave="updateMenu()" onmouseenter="showMenu()">
-            <p>Always Show Menu:</p>
-            <input id="checkMenu" type="checkbox" onclick="updateMenu()" checked>
+            <p>Only Show on Hover:</p>
+            <input id="checkMenu" type="checkbox" onclick="updateMenu()">
+
+            <p>Fullscreen:</p>
+            <input id="checkFullscreen" type="checkbox" onclick="updateFullscreen()">
 
             <p>Color 1:</p>
             <input id="color1" class="jscolor {borderColor:'#FFFFFF', insetColor:'#FFFFFF', backgroundColor:'#0000007f', onFineChange:'updateColor(this)', valueElement:'null', value:'38fc9a'}">
@@ -33,8 +36,10 @@
             <P>Speed:</P>
             <input id="speed" type="range" min="0" max="100" value="20">
 
-            <!-- <p>Cycle:</p>
-            <input id="cycle" type="range" min="0" max="100" value="1"> -->
+            <p>Cycle:</p>
+            <input id="cycle" type="range" min="0" max="100" value="15">
+
+            <p>By Ahmad Saqal</p>
         </div>
 
         <div id="sketch-container"></div>

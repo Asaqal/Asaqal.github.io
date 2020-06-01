@@ -9,7 +9,7 @@ cycle, n# of colors, different shapes, size of background
 
 event listener for menu hover effect
 */
-let density = document.getElementById("density").value;
+let density;
 let squareSize;
 let rows, cols;
 
@@ -17,8 +17,11 @@ let xbuffer, ybuffer;
 
 let points, triangles;
 
+let cycleLocation, cycleSpeed, cycleNumber;
+
 const color1 = [56, 252, 154];
 const color2 = [195, 0, 255];
+const colorDifference = [color2[0]-color1[0], color2[1]-color1[1], color2[2]-color1[2]];
 const colorBorder = [201, 250, 255];
 
 function setup() {
@@ -45,12 +48,22 @@ function draw() {
     for (let i = 0; i < triangles.length; i++) {
         triangles[i].display();
     }
+
+    cycleSpeed = map(document.getElementById("cycle").value, 0, 100, 0, 20);
+    cycleLocation += cycleSpeed;
+    if (cycleLocation > (2*ybuffer)) {
+        cycleLocation = -ybuffer-squareSize*2;
+        if (cycleNumber == 0) {
+            cycleNumber = 1;
+        } else {
+            cycleNumber = 0;
+        }
+    }
+    cycleTravelled = (cycleLocation + ybuffer)/(rows*squareSize*0.55);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-
-    density = document.getElementById("density").value;
 
     initialVars();
     genPoints();
@@ -58,12 +71,18 @@ function windowResized() {
 }
 
 function initialVars() {
+    density = document.getElementById("density").value;
     squareSize = 1 / density * height;
     rows = Math.ceil(height/squareSize) + 4;
     cols = Math.ceil(width/squareSize) + 2;
 
     xbuffer = width/2 - squareSize;
     ybuffer = height/2 - squareSize*2;
+
+    cycleLocation = -ybuffer;
+    cycleSpeed = map(document.getElementById("cycle").value, 0, 100, 0, 20);
+    cycleTravelled = (cycleLocation + ybuffer)/(rows*squareSize);
+    cycleBuffer = 0;
 }
 
 function genPoints() {
@@ -99,12 +118,20 @@ function updateColor(picker) {
 
 function updateMenu() {
     if (document.getElementById("checkMenu").checked) {
-        document.getElementById("menu").style.opacity = "1";
-    } else {
         document.getElementById("menu").style.opacity = "0";
+    } else {
+        document.getElementById("menu").style.opacity = "1";
     }
 }
 
 function showMenu() {
     document.getElementById("menu").style.opacity = "1";
+}
+
+function updateFullscreen() {
+    if (document.getElementById("checkFullscreen").checked) {
+        document.getElementById("body").requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
 }
